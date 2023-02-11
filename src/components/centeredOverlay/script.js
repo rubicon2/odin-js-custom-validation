@@ -6,9 +6,11 @@ export default function createOverlay(parent) {
   parent.appendChild(overlay);
 
   // When overlay is clicked (as opposed to anything on top of it), turns invisible and is removed
-  overlay.addEventListener('click', () => {
-    overlay.classList.add('hidden');
-    overlay.addEventListener('transitionend', () => overlay.remove());
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.add('hidden');
+      overlay.addEventListener('transitionend', () => overlay.remove());
+    }
   });
 
   overlay.classList.remove('hidden');
