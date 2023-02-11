@@ -1,0 +1,12 @@
+:root {
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: pink;
+}
