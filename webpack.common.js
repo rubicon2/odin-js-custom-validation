@@ -1,5 +1,4 @@
-/* global require, module, __dirname */
-const path = require('path');
+/* global require, module  */
 const htmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -21,8 +20,4 @@ module.exports = {
     ],
   },
   plugins: [new htmlPlugin()],
-  output: {
-    filename: 'main.bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
 };
