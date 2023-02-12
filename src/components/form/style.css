@@ -1,0 +1,37 @@
+.basicForm {
+  padding: 1rem;
+
+  background-color: aliceblue;
+  border: 2px solid black;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.buttonsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+}
+
+.basicForm label,
+.basicForm input,
+.basicForm button {
+  font-size: 0.6rem;
+  padding: 0.2rem;
+}
+
+.basicForm input:valid {
+  background-color: none;
+}
+
+.basicForm input:invalid {
+  background-color: pink;
+}
