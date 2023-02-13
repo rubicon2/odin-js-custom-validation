@@ -8,10 +8,10 @@ import createForm, {
   createFormItem,
   createInput,
   createButton,
-  validateForm,
 } from './components/form/script';
 
 const body = document.querySelector('body');
+let detailsForm = null;
 
 let showMenuButton = createButton('Show Form', 'button');
 body.appendChild(showMenuButton);
@@ -22,26 +22,43 @@ showMenuButton.addEventListener('click', (e) => {
 
 function createDetailsForm(parent) {
   let overlay = createOverlay(parent);
-  let form = createForm(overlay);
+  detailsForm = createForm(overlay);
+  detailsForm.noValidate = true;
 
-  createFormItem(form, 'Email', createInput('email'));
-  createFormItem(form, 'Country', createInput('text'));
+  createFormItem(detailsForm, 'Email', createInput('email', 'email', true));
+  createFormItem(detailsForm, 'Country', createInput('text', 'country', true));
 
-  let postcodeInput = createInput('text');
+  let postcodeInput = createInput('text', 'postcode', true);
   postcodeInput.pattern =
     '[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}';
-  createFormItem(form, 'Postcode', postcodeInput);
+  let postcodeRow = createFormItem(detailsForm, 'Postcode', postcodeInput);
+  postcodeRow.input.required = true;
 
-  createFormItem(form, 'Password', createInput('password'));
-  createFormItem(form, 'Confirm password', createInput('password'));
+  createFormItem(
+    detailsForm,
+    'Password',
+    createInput('password', 'password', true)
+  );
+
+  createFormItem(
+    detailsForm,
+    'Confirm password',
+    createInput('password', 'confirm', true)
+  );
 
   createCancelSubmitButtons(
-    form,
+    detailsForm,
     () => fadeOutAndRemove(overlay),
-    () => validateForm(form)
+    () => submitDetailsForm()
   );
 
   // Fade in once form has been constructed
   fadeIn(overlay);
   return overlay;
 }
+
+function submitDetailsForm() {
+  if (valdiateDetailsForm()) detailsForm.submit();
+}
+
+function valdiateDetailsForm() {}

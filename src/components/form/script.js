@@ -15,12 +15,12 @@ export function createFormItem(parent, labelText, inputElement) {
 
   let label = document.createElement('label');
   label.innerText = labelText;
-  label.for = inputElement.id;
+  label.for = inputElement.name;
   formRow.appendChild(label);
 
   formRow.appendChild(inputElement);
 
-  return formRow;
+  return { formRow: formRow, label: label, input: inputElement };
 }
 
 export function createCancelSubmitButtons(parent, onCancel, onSubmit) {
@@ -47,9 +47,12 @@ export function createCancelSubmitButtons(parent, onCancel, onSubmit) {
   return { cancel, submit };
 }
 
-export function createInput(type) {
+export function createInput(type, name, required) {
   let input = document.createElement('input');
   input.type = type;
+  input.id = name;
+  input.name = name;
+  input.required = required;
   return input;
 }
 
@@ -60,5 +63,3 @@ export function createButton(labelText, type) {
 
   return button;
 }
-
-export function validateForm() {}
