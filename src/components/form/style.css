@@ -1,4 +1,5 @@
 .basicForm {
+  width: 12rem;
   padding: 1rem;
 
   background-color: aliceblue;
@@ -7,7 +8,6 @@
 
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .buttonsRow {
@@ -23,15 +23,33 @@
 
 .basicForm label,
 .basicForm input,
-.basicForm button {
+.basicForm button,
+.basicForm .inputError {
   font-size: 0.6rem;
   padding: 0.2rem;
 }
 
-.basicForm input:valid {
+.basicForm input.valid {
   background-color: none;
 }
 
-.basicForm input:invalid {
+.basicForm input.invalid {
   background-color: pink;
+}
+
+.basicForm .inputError {
+  height: 0.9rem;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 0.4rem;
+  font-style: italic;
+  color: red;
+
+  transition: opacity 250ms ease-in-out;
+}
+
+.basicForm .inputError.hidden {
+  opacity: 0;
 }

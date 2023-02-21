@@ -20,7 +20,11 @@ export function createFormItem(parent, labelText, inputElement) {
 
   formRow.appendChild(inputElement);
 
-  return { formRow: formRow, label: label, input: inputElement };
+  let error = document.createElement('div');
+  error.classList.add('inputError', 'hidden');
+  formRow.appendChild(error);
+
+  return { formRow: formRow, label: label, input: inputElement, error: error };
 }
 
 export function createCancelSubmitButtons(parent, onCancel, onSubmit) {
